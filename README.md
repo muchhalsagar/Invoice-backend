@@ -33,6 +33,7 @@ Before you begin, ensure you have the following installed:
    ```bash
    DB_URL=YOUR DB URL
    PORT=YOUR PORT NUMBER
+   SECKRET_KEY=YOUR SECKRET KEY
 
 4. **Start the Applications**
 
