@@ -5,6 +5,7 @@ const csvParser = require('csv-parser');
 const fs = require('fs');
 const path = require('path');
 const Product = require('../model/product.model');
+const verifyToken = require('../middleware/auth');
 
 // Set up multer for file uploads
 const upload = multer({ dest: 'uploads/' });
@@ -15,7 +16,7 @@ const upload = multer({ dest: 'uploads/' });
 *@Description API for Add new Products by CSV file
 *@return Success Message
 **********************************************/
-router.post('/upload', upload.single('file'), async (req, res) => {
+router.post('/upload', verifyToken, upload.single('file'), async (req, res) => {
   const filePath = path.join(__dirname, '../uploads', req.file.filename);
   const products = [];
 
@@ -46,7 +47,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 *@Description API for Get All Products
 *@return Products objects
 **********************************************/
-router.get('/', async (req, res) => {
+router.get('/', verifyToken, async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
