@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 app.use('/api/products', require('./routes/product.routes'));
 app.use('/api/invoices', require('./routes/invoice.routes'));
+app.use('/api/admin', require('./routes/admin.routes'));
 
 console.log('Server Created');
 
